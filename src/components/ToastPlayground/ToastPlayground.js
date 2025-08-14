@@ -38,9 +38,13 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Radio name={"notice"} label={"Notice"} value={"notice"} checkedValue={variant} setCheckedValue={setVariant}/>
-
-            {/* TODO Other Variant radio buttons here */}
+            {
+              VARIANT_OPTIONS.map(option => {
+                return (
+                  <Radio key={option} name={option} label={option} value={option} checkedValue={variant} setCheckedValue={setVariant}/>
+                )
+              })
+            }
           </div>
         </div>
 
