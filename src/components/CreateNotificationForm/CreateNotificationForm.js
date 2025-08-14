@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from '../CreateNotificationForm.module.css'
-import Button from '../Button'
+
 import { DEFAULT_VARIANT_OPTION, VARIANT_OPTIONS } from '../../constants'
 import Notification from '../../models/notifications'
+import Button from '../Button'
+
+import styles from './CreateNotificationForm.module.css'
 
 
 function CreateNotificationForm({onNewNotificationCreated}) {
