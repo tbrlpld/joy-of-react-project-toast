@@ -25,7 +25,7 @@ function ToastPlayground() {
 
       {
         isToastPopped &&
-        <div>Toast</div>
+        <Toast></Toast>
       }
 
       <div className={styles.controlsWrapper}>
