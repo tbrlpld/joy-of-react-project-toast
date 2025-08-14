@@ -19,8 +19,7 @@ function ToastPlayground() {
     setNotifications(nextNotifications)
   }
 
-  console.log(notifications)
-
+  console.log("Rendering playground.")
   return (
     <div className={styles.wrapper}>
       <header>

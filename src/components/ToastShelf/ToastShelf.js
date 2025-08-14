@@ -4,6 +4,7 @@ import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
 
 function ToastShelf({notifications, notificationDismisser}) {
+  console.log("Rendering shelf.")
   return (
     <ol className={styles.wrapper}>
       {notifications.map(notification => {

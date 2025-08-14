@@ -22,6 +22,7 @@ const ICONS_BY_VARIANT = {
 function Toast({variant=DEFAULT_VARIANT_OPTION, onDismiss, children}) {
   const IconTag = ICONS_BY_VARIANT[variant]
 
+  console.log("Rendering toast.")
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
