@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '../Button';
-import Toast from '../Toast'
+import ToastShelf from '../ToastShelf'
 
 import styles from './ToastPlayground.module.css';
 
@@ -10,15 +10,6 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
   const [message, setMessage] = React.useState('')
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0])
-  const [isToastPopped, setIsToastPopped] = React.useState(false)
-
-  function loadToast() {
-    setIsToastPopped(false)
-  }
-
-  function popToast() {
-    setIsToastPopped(true)
-  }
 
   return (
     <div className={styles.wrapper}>
@@ -27,10 +18,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {
-        isToastPopped &&
-        <Toast variant={variant} onDismiss={loadToast}>{message}</Toast>
-      }
+      <ToastShelf />
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
@@ -67,7 +55,7 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button type={"button"} onClick={popToast}>Pop Toast!</Button>
+            <Button type={"button"}>Pop Toast!</Button>
           </div>
         </div>
       </div>
