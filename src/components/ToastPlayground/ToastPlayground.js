@@ -8,16 +8,32 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 const DEFAULT_VARIANT_OPTION = VARIANT_OPTIONS[0]
 
+
+class Notification {
+  constructor ({message, variant=DEFAULT_VARIANT_OPTION}) {
+    this.message = message
+    this.variant = variant
+  }
+}
+
+
 function ToastPlayground() {
+  const [notifications, setNotifications] = React.useState([])
   const [message, setMessage] = React.useState('')
   const [variant, setVariant] = React.useState(DEFAULT_VARIANT_OPTION)
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log({message, variant})
+
+    const notification = new Notification({message, variant})
+    console.log(notification)
+    setNotifications([...notifications, notification])
+
     setMessage('')
     setVariant(DEFAULT_VARIANT_OPTION)
   }
+
+  console.log(notifications)
 
   return (
     <div className={styles.wrapper}>
