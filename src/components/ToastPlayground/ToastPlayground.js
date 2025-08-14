@@ -29,7 +29,7 @@ function ToastPlayground() {
 
       {
         isToastPopped &&
-        <Toast onDismiss={loadToast}></Toast>
+        <Toast onDismiss={loadToast}>{message}</Toast>
       }
 
       <div className={styles.controlsWrapper}>
