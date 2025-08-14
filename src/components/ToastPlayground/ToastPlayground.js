@@ -28,7 +28,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf notifications={notifications} dismissNotification={dismissNotification}/>
+      <ToastShelf notifications={notifications} notificationDismisser={dismissNotification}/>
 
       <CreateNotificationForm onNewNotificationCreated={submitNotification}/>
     </div>

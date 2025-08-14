@@ -3,7 +3,7 @@ import React from 'react';
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
 
-function ToastShelf({notifications, dismissNotification}) {
+function ToastShelf({notifications, notificationDismisser}) {
   return (
     <ol className={styles.wrapper}>
       {notifications.map(notification => {
@@ -11,7 +11,7 @@ function ToastShelf({notifications, dismissNotification}) {
           <li key={notification.id} className={styles.toastWrapper}>
             <Toast
               variant={notification.variant}
-              onDismiss={() => dismissNotification(notification)}
+              onDismiss={() => notificationDismisser(notification)}
             >
               {notification.message}
             </Toast>
