@@ -7,6 +7,7 @@ import {
   X,
 } from 'react-feather';
 
+import { DEFAULT_VARIANT_OPTION } from '../../constants'
 import VisuallyHidden from '../VisuallyHidden';
 
 import styles from './Toast.module.css';
@@ -18,7 +19,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({variant='notice', onDismiss, children}) {
+function Toast({variant=DEFAULT_VARIANT_OPTION, onDismiss, children}) {
   const IconTag = ICONS_BY_VARIANT[variant]
 
   return (
