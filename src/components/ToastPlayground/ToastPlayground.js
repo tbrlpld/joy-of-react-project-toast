@@ -10,13 +10,13 @@ const DEFAULT_VARIANT_OPTION = VARIANT_OPTIONS[0]
 
 function ToastPlayground() {
   const [message, setMessage] = React.useState('')
-  const [variant, setVariant] = React.useState()
+  const [variant, setVariant] = React.useState(DEFAULT_VARIANT_OPTION)
 
   function handleSubmit(event) {
     event.preventDefault()
     console.log({message, variant})
     setMessage('')
-    setVariant(VARIANT_OPTIONS[0])
+    setVariant(DEFAULT_VARIANT_OPTION)
   }
 
   return (
