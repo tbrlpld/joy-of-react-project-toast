@@ -6,10 +6,18 @@ import ToastShelf from '../ToastShelf'
 import styles from './ToastPlayground.module.css';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
+const DEFAULT_VARIANT_OPTION = VARIANT_OPTIONS[0]
 
 function ToastPlayground() {
   const [message, setMessage] = React.useState('')
-  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0])
+  const [variant, setVariant] = React.useState(DEFAULT_VARIANT_OPTION)
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log({message, variant})
+    setMessage('')
+    setVariant(VARIANT_OPTIONS[0])
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -20,7 +28,7 @@ function ToastPlayground() {
 
       <ToastShelf />
 
-      <div className={styles.controlsWrapper}>
+      <form className={styles.controlsWrapper} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <label
             htmlFor="message"
@@ -55,10 +63,10 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button type={"button"}>Pop Toast!</Button>
+            <Button type={"submit"}>Pop Toast!</Button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
