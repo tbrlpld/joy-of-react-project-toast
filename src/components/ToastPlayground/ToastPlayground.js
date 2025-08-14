@@ -12,6 +12,10 @@ function ToastPlayground() {
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0])
   const [isToastPopped, setIsToastPopped] = React.useState(false)
 
+  function loadToast() {
+    setIsToastPopped(false)
+  }
+
   function popToast() {
     setIsToastPopped(true)
   }
@@ -25,7 +29,7 @@ function ToastPlayground() {
 
       {
         isToastPopped &&
-        <Toast></Toast>
+        <Toast onDismiss={loadToast}></Toast>
       }
 
       <div className={styles.controlsWrapper}>
