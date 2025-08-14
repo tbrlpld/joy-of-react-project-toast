@@ -51,7 +51,7 @@ function ToastPlayground() {
             {
               VARIANT_OPTIONS.map(option => {
                 return (
-                  <Radio key={option} name={option} label={option} value={option} checkedValue={variant} setCheckedValue={setVariant}/>
+                  <Radio key={option} name={option} label={option} value={option} checkedValue={variant} onChange={() => setVariant(option)}/>
                 )
               })
             }
@@ -71,7 +71,7 @@ function ToastPlayground() {
   );
 }
 
-function Radio ({name, label, value, checkedValue, setCheckedValue}) {
+function Radio ({name, label, value, checkedValue, onChange}) {
   const id = React.useId()
 
   return (
@@ -82,7 +82,7 @@ function Radio ({name, label, value, checkedValue, setCheckedValue}) {
         name={name}
         value={value}
         checked={value === checkedValue}
-        onChange={() => setCheckedValue(value)}
+        onChange={onChange}
       />
       {label}
     </label>
