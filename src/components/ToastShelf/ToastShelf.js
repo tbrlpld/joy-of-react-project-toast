@@ -11,7 +11,7 @@ function ToastShelf({notifications, dismissNotification}) {
           <li key={notification.id} className={styles.toastWrapper}>
             <Toast
               variant={notification.variant}
-              onDismiss={() => dismissNotification(notification.id)}
+              onDismiss={() => dismissNotification(notification)}
             >
               {notification.message}
             </Toast>

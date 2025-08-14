@@ -35,13 +35,11 @@ function ToastPlayground() {
   }
 
   const dismissNotification = React.useCallback(
-    function dismissNotification(id) {
-      // Index of the notification to dismiss.
-      const index = notifications.findIndex(el => el.id === id)
-      // Modify the notifications (did not find a better array method to do it).
-      notifications.splice(index, 1)
-      // Update the stored notifications
-      setNotifications([...notifications])
+    function dismissNotification(notification) {
+      // Create filtered version of array, only keeping notifications that are
+      // not the passed one.
+      const nextNotifications = notifications.filter(item => item !== notification)
+      setNotifications(nextNotifications)
     },
     [notifications]
   )
