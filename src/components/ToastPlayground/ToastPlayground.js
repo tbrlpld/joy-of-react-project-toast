@@ -34,15 +34,12 @@ function ToastPlayground() {
     setVariant(DEFAULT_VARIANT_OPTION)
   }
 
-  const dismissNotification = React.useCallback(
-    function dismissNotification(notification) {
-      // Create filtered version of array, only keeping notifications that are
-      // not the passed one.
-      const nextNotifications = notifications.filter(item => item !== notification)
-      setNotifications(nextNotifications)
-    },
-    [notifications]
-  )
+  function dismissNotification(notification) {
+    // Create filtered version of array, only keeping notifications that are
+    // not the passed one.
+    const nextNotifications = notifications.filter(item => item !== notification)
+    setNotifications(nextNotifications)
+  }
 
   console.log(notifications)
 
