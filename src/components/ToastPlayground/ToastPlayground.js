@@ -11,6 +11,7 @@ const DEFAULT_VARIANT_OPTION = VARIANT_OPTIONS[0]
 
 class Notification {
   constructor ({message, variant=DEFAULT_VARIANT_OPTION}) {
+    this.id = crypto.randomUUID()
     this.message = message
     this.variant = variant
   }
@@ -33,6 +34,18 @@ function ToastPlayground() {
     setVariant(DEFAULT_VARIANT_OPTION)
   }
 
+  const dismissNotification = React.useCallback(
+    function dismissNotification(id) {
+      // Index of the notification to dismiss.
+      const index = notifications.findIndex(el => el.id === id)
+      // Modify the notifications (did not find a better array method to do it).
+      notifications.splice(index, 1)
+      // Update the stored notifications
+      setNotifications([...notifications])
+    },
+    [notifications]
+  )
+
   console.log(notifications)
 
   return (
@@ -42,7 +55,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf notifications={notifications}/>
+      <ToastShelf notifications={notifications} dismissNotification={dismissNotification}/>
 
       <form className={styles.controlsWrapper} onSubmit={handleSubmit}>
         <div className={styles.row}>
