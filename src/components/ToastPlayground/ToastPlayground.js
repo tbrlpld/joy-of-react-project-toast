@@ -10,7 +10,7 @@ const DEFAULT_VARIANT_OPTION = VARIANT_OPTIONS[0]
 
 function ToastPlayground() {
   const [message, setMessage] = React.useState('')
-  const [variant, setVariant] = React.useState(DEFAULT_VARIANT_OPTION)
+  const [variant, setVariant] = React.useState()
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -38,7 +38,13 @@ function ToastPlayground() {
             Message
           </label>
           <div className={styles.inputWrapper}>
-            <textarea id="message" className={styles.messageInput} onChange={(event) => setMessage(event.target.value)} value={message}/>
+            <textarea
+              id="message"
+              className={styles.messageInput}
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              required={true}
+            />
           </div>
         </div>
 
@@ -51,7 +57,7 @@ function ToastPlayground() {
             {
               VARIANT_OPTIONS.map(option => {
                 return (
-                  <Radio key={option} name={option} label={option} value={option} checkedValue={variant} onChange={() => setVariant(option)}/>
+                  <Radio key={option} name='variant' label={option} value={option} checkedValue={variant} onChange={() => setVariant(option)}/>
                 )
               })
             }
@@ -83,6 +89,7 @@ function Radio ({name, label, value, checkedValue, onChange}) {
         value={value}
         checked={value === checkedValue}
         onChange={onChange}
+        required={true}
       />
       {label}
     </label>
