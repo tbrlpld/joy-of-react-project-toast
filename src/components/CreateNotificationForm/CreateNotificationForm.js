@@ -1,20 +1,21 @@
 import React from 'react';
 
 import { DEFAULT_VARIANT_OPTION, VARIANT_OPTIONS } from '../../constants'
-import Notification from '../../models/notifications'
+import {NotificationContext} from '../NotificationProvider'
 import Button from '../Button'
 
 import styles from './CreateNotificationForm.module.css'
 
 
-function CreateNotificationForm({onNewNotificationCreated}) {
+function CreateNotificationForm() {
+  const {createNotification} = React.useContext(NotificationContext)
   const [message, setMessage] = React.useState('')
   const [variant, setVariant] = React.useState(DEFAULT_VARIANT_OPTION)
 
   function handleSubmit(event) {
     event.preventDefault()
 
-    onNewNotificationCreated(new Notification({message, variant}))
+    createNotification({message, variant})
 
     setMessage('')
     setVariant(DEFAULT_VARIANT_OPTION)

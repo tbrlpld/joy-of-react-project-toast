@@ -1,20 +1,15 @@
 import React from 'react';
 
-import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
 
-function ToastShelf({notifications, notificationDismisser}) {
+function ToastShelf({children}) {
+  console.log("Rendering shelf.")
   return (
     <ol className={styles.wrapper}>
-      {notifications.map(notification => {
+      {children.map(child  => {
         return (
-          <li key={notification.id} className={styles.toastWrapper}>
-            <Toast
-              variant={notification.variant}
-              onDismiss={() => notificationDismisser(notification)}
-            >
-              {notification.message}
-            </Toast>
+          <li key={child.key} className={styles.toastWrapper}>
+            {child}
           </li>
         )
       })}
