@@ -9,14 +9,14 @@ import styles from './CreateNotificationForm.module.css'
 
 
 function CreateNotificationForm() {
-  const {submitNotification} = React.useContext(NotificationContext)
+  const {createNotification} = React.useContext(NotificationContext)
   const [message, setMessage] = React.useState('')
   const [variant, setVariant] = React.useState(DEFAULT_VARIANT_OPTION)
 
   function handleSubmit(event) {
     event.preventDefault()
 
-    submitNotification(new Notification({message, variant}))
+    createNotification({message, variant})
 
     setMessage('')
     setVariant(DEFAULT_VARIANT_OPTION)

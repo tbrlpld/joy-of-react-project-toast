@@ -5,7 +5,8 @@ export const NotificationContext = React.createContext()
 function NotificationProvider({children}) {
   const [notifications, setNotifications] = React.useState([])
 
-  function submitNotification(notification) {
+  function createNotification({message, variant}) {
+    const notification = new Notification({message, variant})
     setNotifications((current) => [...current, notification])
   }
 
@@ -19,7 +20,7 @@ function NotificationProvider({children}) {
 
   const value = {
     notifications,
-    submitNotification,
+    createNotification,
     dismissNotification,
   }
 
