@@ -23,10 +23,18 @@ function NotificationProvider({children}) {
     [setNotifications],
   )
 
+  const dismissAllNotifications = React.useCallback(
+    function dismissAllNotifications() {
+      setNotifications([])
+    },
+    [setNotifications]
+  )
+
   const value = {
     notifications,
     createNotification,
     dismissNotification,
+    dismissAllNotifications,
   }
 
   return (
