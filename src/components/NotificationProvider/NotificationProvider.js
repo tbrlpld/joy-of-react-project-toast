@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Notification from '../../models/notifications'
+import useEscape from '../../hooks/use-escape'
 
 export const NotificationContext = React.createContext()
 
@@ -30,11 +31,12 @@ function NotificationProvider({children}) {
     [setNotifications]
   )
 
+  useEscape({callback: dismissAllNotifications})
+
   const value = {
     notifications,
     createNotification,
     dismissNotification,
-    dismissAllNotifications,
   }
 
   return (
