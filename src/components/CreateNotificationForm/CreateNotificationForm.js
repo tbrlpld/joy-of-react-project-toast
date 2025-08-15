@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { DEFAULT_VARIANT_OPTION, VARIANT_OPTIONS } from '../../constants'
-import Notification from '../../models/notifications'
 import {NotificationContext} from '../NotificationProvider'
 import Button from '../Button'
 

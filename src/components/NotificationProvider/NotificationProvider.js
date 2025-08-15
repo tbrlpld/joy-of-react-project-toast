@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Notification from '../../models/notifications'
+
 export const NotificationContext = React.createContext()
 
 function NotificationProvider({children}) {
