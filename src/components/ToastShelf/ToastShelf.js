@@ -1,22 +1,15 @@
 import React from 'react';
 
-import { NotificationContext } from '../NotificationProvider'
-import Toast from '../Toast';
-
 import styles from './ToastShelf.module.css';
 
-function ToastShelf() {
-  const { notifications, dismissNotification } = React.useContext(NotificationContext)
-
+function ToastShelf({children}) {
   console.log("Rendering shelf.")
   return (
     <ol className={styles.wrapper}>
-      {notifications.map(notification => {
+      {children.map(child  => {
         return (
-          <li key={notification.id} className={styles.toastWrapper}>
-            <Toast variant={notification.variant} onDismiss={() => dismissNotification(notification)}>
-              {notification.message}
-            </Toast>
+          <li key={child.key} className={styles.toastWrapper}>
+            {child}
           </li>
         )
       })}

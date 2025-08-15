@@ -1,13 +1,16 @@
 import React from 'react';
 
-import NotificationProvider from '../NotificationProvider'
+import { NotificationContext } from '../NotificationProvider'
 import CreateNotificationForm from '../CreateNotificationForm'
+import Toast from '../Toast'
 import ToastShelf from '../ToastShelf'
 
 import styles from './ToastPlayground.module.css';
 
 
 function ToastPlayground() {
+  const { notifications, dismissNotification } = React.useContext(NotificationContext)
+
   console.log("Rendering playground.")
   return (
     <div className={styles.wrapper}>
@@ -16,11 +19,17 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <NotificationProvider>
-        <ToastShelf/>
+      <ToastShelf>
+        {notifications.map((notification) => {
+          return (
+              <Toast key={notification.id} variant={notification.variant} onDismiss={() => dismissNotification(notification)}>
+                {notification.message}
+              </Toast>
+            )
+        })}
+      </ToastShelf>
 
-        <CreateNotificationForm/>
-      </NotificationProvider>
+      <CreateNotificationForm/>
     </div>
   );
 }
