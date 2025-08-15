@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { NotificationContext } from '../NotificationProvider'
 import CreateNotificationForm from '../CreateNotificationForm'
-import NotificationToast from '../NotificationToast'
-import ToastShelf from '../ToastShelf'
+import NotificationToastShelf from '../NotificationToastShelf'
 
 import styles from './ToastPlayground.module.css';
 
 
 function ToastPlayground() {
-  const { notifications } = React.useContext(NotificationContext)
-
   console.log("Rendering playground.")
   return (
     <div className={styles.wrapper}>
@@ -19,13 +15,9 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf>
-        {notifications.map(
-          (notification) => <NotificationToast key={notification.id} notification={notification}/>
-        )}
-      </ToastShelf>
+      <NotificationToastShelf />
 
-      <CreateNotificationForm/>
+      <CreateNotificationForm />
     </div>
   );
 }
