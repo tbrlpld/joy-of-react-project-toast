@@ -1,24 +1,13 @@
 import React from 'react';
 
-import ToastShelf from '../ToastShelf'
-import styles from './ToastPlayground.module.css';
+import NotificationProvider from '../NotificationProvider'
 import CreateNotificationForm from '../CreateNotificationForm'
+import ToastShelf from '../ToastShelf'
+
+import styles from './ToastPlayground.module.css';
 
 
 function ToastPlayground() {
-  const [notifications, setNotifications] = React.useState([])
-
-  function submitNotification(notification) {
-    setNotifications([...notifications, notification])
-  }
-
-  function dismissNotification(notification) {
-    // Create filtered version of array, only keeping notifications that are
-    // not the passed one.
-    const nextNotifications = notifications.filter(item => item !== notification)
-    setNotifications(nextNotifications)
-  }
-
   console.log("Rendering playground.")
   return (
     <div className={styles.wrapper}>
@@ -27,9 +16,11 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf notifications={notifications} notificationDismisser={dismissNotification}/>
+      <NotificationProvider>
+        <ToastShelf/>
 
-      <CreateNotificationForm onNewNotificationCreated={submitNotification}/>
+        <CreateNotificationForm/>
+      </NotificationProvider>
     </div>
   );
 }
