@@ -12,7 +12,7 @@ function NotificationToastShelf() {
   useEscape({callback: dismissAllNotifications})
 
   return (
-    <ToastShelf>
+    <ToastShelf role={"region"} aria-live={"polite"} aria-label={"Notification"}>
       {notifications.map((notification) => (
         <NotificationToast key={notification.id} notification={notification}/>
       ))}

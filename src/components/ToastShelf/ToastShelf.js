@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles from './ToastShelf.module.css';
 
-function ToastShelf({children}) {
+function ToastShelf({children, ...props}) {
   console.log("Rendering shelf.")
   return (
-    <ol className={styles.wrapper}>
+    <ol className={styles.wrapper} {...props}>
       {children.map(child  => {
         return (
           <li key={child.key} className={styles.toastWrapper}>
