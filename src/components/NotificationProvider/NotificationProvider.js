@@ -12,13 +12,16 @@ function NotificationProvider({children}) {
     setNotifications((current) => [...current, notification])
   }
 
-  function dismissNotification(notification) {
-    setNotifications(
-      current => current.filter(
-        item => item !== notification
+  const dismissNotification = React.useCallback(
+    function dismissNotification(notification) {
+      setNotifications(
+        current => current.filter(
+          item => item !== notification
+        )
       )
-    )
-  }
+    },
+    [setNotifications],
+  )
 
   const value = {
     notifications,
