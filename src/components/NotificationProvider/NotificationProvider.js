@@ -5,34 +5,23 @@ export const NotificationContext = React.createContext()
 function NotificationProvider({children}) {
   const [notifications, setNotifications] = React.useState([])
 
-  const value = React.useMemo(
-    () => {
-      function submitNotification(notification) {
-        setNotifications((current) => [...current, notification])
-      }
+  function submitNotification(notification) {
+    setNotifications((current) => [...current, notification])
+  }
 
-      function dismissNotification(notification) {
-        setNotifications(
-          (current) => {
-            return current.filter(
-              // Create filtered version of array, only keeping notifications that
-              // are not the passed one.
-              (item) => {
-                return item !== notification
-              }
-            )
-          }
-        )
-      }
+  function dismissNotification(notification) {
+    setNotifications(
+      current => current.filter(
+        item => item !== notification
+      )
+    )
+  }
 
-      return {
-        notifications,
-        submitNotification,
-        dismissNotification,
-      }
-    },
-    [notifications, setNotifications],
-  )
+  const value = {
+    notifications,
+    submitNotification,
+    dismissNotification,
+  }
 
   return (
     <NotificationContext.Provider value={value}>
